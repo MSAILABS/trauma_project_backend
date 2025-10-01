@@ -15,7 +15,7 @@ class ArrayData(BaseModel):
 async def save_array(payload: ArrayData):
     data = []
 
-    file_name = f"{payload.file_name}.json"
+    file_name = f"array.json"
     file_path = os.path.join(os.getcwd(), "signal_data_json_files", file_name)
 
     if os.path.exists(file_path):
@@ -31,10 +31,10 @@ async def save_array(payload: ArrayData):
     return {"message": "Array saved successfully"}
 
 # Route 2: Get the last saved multidimensional array
-@router.get("/get_array/{segment_num}/{file_name}")
-async def get_array(segment_num: int, file_name: str):
+@router.get("/get_array/{segment_num}")
+async def get_array(segment_num: int):
     try:
-        file_name = f"{file_name}.json"
+        file_name = f"array.json"
         file_path = os.path.join(os.getcwd(), "signal_data_json_files", file_name)
 
         if not os.path.exists(file_path):

@@ -8,6 +8,8 @@ from fastapi import FastAPI
 from fastapi.concurrency import asynccontextmanager
 from starlette.middleware.cors import CORSMiddleware
 from router.base import api_router
+from queue_worker import start_worker
+from threading import Thread
 
 # loading environment variables
 load_dotenv()
@@ -38,7 +40,9 @@ def setup_logging():
 async def lifespan(app: FastAPI):
     # this code will run when application starts
     log.info('app Starting................')
-    time.sleep(30)
+    # ✅ Start the worker in a background thread
+    # worker_thread = Thread(target=start_worker, daemon=True)
+    # worker_thread.start()
     yield
 
     # this code will run when application shutdown
