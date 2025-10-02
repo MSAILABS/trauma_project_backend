@@ -17,8 +17,27 @@ def get_formated(a):
         temp["description" if key == "lsi_description_gt" else key] = c
     return temp
 
+# --- PPG Sinewave Generation Function ---
+def generate_ppg_sinewave(sampling_rate, segment_length, heart_rate_bpm=60):
+    """
+    Generates a simple synthetic sinewave representing a PPG signal.
+    """
+    # Calculate frequency in Hz
+    freq_hz = heart_rate_bpm / 60
+    
+    # Generate time array for the segment
+    time_sec = np.arange(segment_length) / sampling_rate
+    
+    # Generate sinewave (amplitude 1, offset 1 for non-negative signal, then normalize)
+    # Using a 2*pi*f*t formula
+    sinewave = np.sin(2 * np.pi * freq_hz * time_sec)
+    
+    # Normalize the sinewave to the range [-1, 1] for consistency with ECG
+    # It's already in [-1, 1] but good practice to ensure if other transformations were used
+    return normalize_to_minus1_1(sinewave) # Re-use your existing normalization utility
+
 # Load metadata
-df = pd.read_csv("fullfeat1_saved_sample.csv", sep="|")
+df = pd.read_csv("C:/Users/rehan/Desktop/salman/trauma_project_backend/temp/fullfeat1_saved_sample.csv", sep="|")
 print(df["studyid"].unique())
 patient_id = "P2_0039"
 patientdf = df[df["studyid"] == patient_id]
@@ -35,7 +54,7 @@ signals = record.p_signal.T  # shape: (n_leads, n_samples)
 
 segment_length = sampling_rate
 num_segments = signals.shape[1] // segment_length
-indexForDescription = 0
+indexForDescription = -1
 
 # Define how often to increment description index
 segments_per_description = num_segments // len(patientdf["description"])
@@ -54,13 +73,15 @@ for index in range(num_segments):
     payload["lsi_description"] = current_description
 
     for i, lead_name in enumerate(signal_names):
+        if lead_name == "V1":
+            continue
         segment = signals[i][index * segment_length : (index + 1) * segment_length]
         filtered = butter_bandpass_filter(segment, fs=sampling_rate, lowcut=0.5, highcut=40)
         normalized = normalize_to_minus1_1(filtered)
         time_axis = [t / sampling_rate for t in range(len(normalized))]
-
-        payload[lead_name] = normalized
-        payload[f"{lead_name}_time"] = time_axis
+        key_name = "ECG"
+        payload[key_name] = normalized
+        payload[f"{key_name}_time"] = time_axis
 
     payload["lsi_sampling_rate"] = sampling_rate
 

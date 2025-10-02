@@ -84,7 +84,7 @@ def get_sample_time_series(vs_filename='P1s_0001_00_vs_st0_dt600_obfca9af.hdf5',
     }
 
 def read_files():
-    dir_url = "D:\Salman\ecg_visualization\sample"
+    dir_url = "C:/Users/rehan/Desktop/salman/trauma_project_backend/temp/sample"
     urls = os.listdir(dir_url)
 
     for url in urls:
