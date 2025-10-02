@@ -43,7 +43,7 @@ async def get_array(segment_num: int):
         with open(file_path, "r") as f:
             data = json.load(f)
         
-        print(len(data))
+        print(len(data),segment_num)
         res_data = data[segment_num + 1] if len(data) > 0 else {}
         return res_data
     except Exception as e:

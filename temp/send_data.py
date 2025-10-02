@@ -5,7 +5,7 @@ import requests
 import json
 from pydantic import BaseModel
 import pandas as pd
-from utils import butter_bandpass_filter, normalize_to_minus1_1, normalize_to_range
+from utils import butter_bandpass_filter, normalize_to_minus1_1
 
 def is_multidimensional_list(lst):
     if not isinstance(lst, list):
@@ -42,29 +42,40 @@ def get_formated(a):
 dir_url = r"D:\Salman\ecg_visualization\processed_files"
 df = pd.read_csv("fullfeat1_saved_sample.csv", sep="|")
 
-patient = "P2s_0039_"
+patient = "P2s_0275_"
 
 print(df["studyid"].unique())
 
-patientdf = df[df["studyid"] == "P2s_0999"]
+patientdf1 = df[df["studyid"] == "P2_0039"]
+patientdf2 = df[df["studyid"] == "P2_0641"]
 # patientdf = df[df["studyid"] == patient[0: -1]]
 
-print(patientdf)
+print(patientdf1)
 
 # Select the last 6 columns plus 'lsi_description_gt'
-selected_cols = list(patientdf.columns[-7:-1]) + ['lsi_description_gt']
-patientdf_subset = json.loads(patientdf[selected_cols].to_json())
+selected_cols = list(patientdf1.columns[-7:-1]) + ['lsi_description_gt']
+patientdf_subset = json.loads(patientdf1[selected_cols].to_json())
 
-patientdf = get_formated(patientdf_subset)
+patientdf1 = get_formated(patientdf_subset)
+
+# Select the last 6 columns plus 'lsi_description_gt'
+selected_cols = list(patientdf2.columns[-7:-1]) + ['lsi_description_gt']
+patientdf_subset = json.loads(patientdf2[selected_cols].to_json())
+
+patientdf2 = get_formated(patientdf_subset)
 
 # Filter only matching files
-files_names = [f for f in os.listdir(dir_url) if patient in f][:1]
+files_names = [f for f in os.listdir(dir_url) if patient in f]
 
 file_number = 1
-for file_name in files_names:
+indexForDescription = -1
+for i, file_name in enumerate(files_names):
+    if i > 3: break
     file_path = os.path.join(dir_url, file_name)
 
     data = {}
+
+    indexForDescription += 1
 
     sampling_rate = 260
 
@@ -110,6 +121,13 @@ for file_name in files_names:
     max_index = len(next(iter(data.values())))
 
     while index < max_index:
+        if i == 0:
+            if index > 60:
+                break
+        else:
+            if index > 10:
+                break
+
         payload = {}
 
         for lead_name, values in data.items():
@@ -133,14 +151,18 @@ for file_name in files_names:
         
         payload["lsi_sampling_rate"] = sampling_rate
 
-        for key in patientdf:
-            value = patientdf[key][file_number - 1]
-            if key == "description":
-                for v in patientdf[key]:
-                    if v != None:
-                        value = v
-                        break
-
+        # Attach metadata
+        for key in patientdf1:
+            if indexForDescription == 0:
+                value = None if key == "description" else False
+            elif indexForDescription == 1:
+                value = patientdf1[key][0]
+            else:
+                value = patientdf2[key][0]
+            # if key == "description":
+            #     value = next((v for v in patientdf[key] if v is not None), value)
+            # else:
+            #     value = next((v for v in patientdf[key] if v is not False), value)
             payload[f"lsi_{key}"] = value
 
         payload_data = ArrayData(data=payload, file_name=patient)
@@ -148,8 +170,9 @@ for file_name in files_names:
         response = requests.post("http://127.0.0.1:5001/data/save_array", json=payload_data.model_dump())
 
         print(response.content)
+        print(f"saved {indexForDescription}")
 
-        sleep(1)  # Pause before next frame
+        # sleep(1)  # Pause before next frame
         index += 1
 
 
