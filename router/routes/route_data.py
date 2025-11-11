@@ -1,51 +1,59 @@
-import os, json
-
+import os
+import json
 from fastapi import APIRouter
 from pydantic import BaseModel
+from queue import Queue, Empty
+from datetime import datetime
 
 router = APIRouter()
+
+# Queue to hold incoming arrays
+array_queue = Queue(maxsize=0)
+
+# Folder and file setup
+folder_path = os.path.join(os.getcwd(), "signal_data_json_files")
+os.makedirs(folder_path, exist_ok=True)
+file_name = "array.json"
+file_path = os.path.join(folder_path, file_name)
 
 # Pydantic model for validation
 class ArrayData(BaseModel):
     data: dict
-    file_name: str
+    file_name: str = file_name  # optional, default to "array.json"
 
-# Route 1: Save multidimensional array to file
+# Route 1: Save multidimensional array to queue
 @router.post("/save_array")
 async def save_array(payload: ArrayData):
-    data = []
+    array_entry = {
+        "data": payload.data,
+        "timestamp": datetime.utcnow().isoformat()
+    }
+    try:
+        array_queue.put_nowait(array_entry)
+    except:
+        return {"status": "queue_full"}, 429
 
-    file_name = f"array.json"
-    file_path = os.path.join(os.getcwd(), "signal_data_json_files", file_name)
+    return {"status": "queued", "queue_size": array_queue.qsize()}
 
+# Route 2: Get the next array from queue (frontend)
+@router.get("/get_array")
+async def get_array():
+    try:
+        array_entry = array_queue.get_nowait()  # pop from queue
+    except Empty:
+        return {"message": "no new array data"}
+
+    print(array_queue.qsize())
+    # Save consumed array to file
     if os.path.exists(file_path):
         with open(file_path, "r") as f:
-            data: list = json.loads(f.read())
+            all_data = json.load(f)
+    else:
+        all_data = []
 
-    data.append(payload.data)
+    all_data.append(array_entry)
 
     with open(file_path, "w") as f:
-        json.dump(data, f)
+        json.dump(all_data, f)
 
-
-    return {"message": "Array saved successfully"}
-
-# Route 2: Get the last saved multidimensional array
-@router.get("/get_array/{segment_num}")
-async def get_array(segment_num: int):
-    try:
-        file_name = f"array.json"
-        file_path = os.path.join(os.getcwd(), "signal_data_json_files", file_name)
-
-        if not os.path.exists(file_path):
-            return {"error": "No array saved yet"}
-        
-        with open(file_path, "r") as f:
-            data = json.load(f)
-        
-        print(len(data),segment_num)
-        res_data = data[segment_num + 1] if len(data) > 0 else {}
-        return res_data
-    except Exception as e:
-        print(e)
-        raise e
+    return array_entry
