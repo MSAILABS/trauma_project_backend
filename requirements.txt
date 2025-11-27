@@ -26,3 +26,6 @@ typing_extensions==4.15.0
 uvicorn==0.34.0
 watchfiles==1.1.0
 websockets==15.0.1
+pyjwt
+python-multipart
+passlib[argon2]

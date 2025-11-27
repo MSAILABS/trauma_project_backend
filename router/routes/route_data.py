@@ -1,10 +1,12 @@
 import os
 import json
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel
 from queue import Queue, Empty
 from datetime import datetime
+
+from router.utils.jwt_dependency import get_current_user
 
 router = APIRouter()
 
@@ -27,7 +29,7 @@ class ArrayData(BaseModel):
 # 1. Save multidimensional array
 # ------------------------------
 @router.post("/save_array")
-async def save_array(payload: ArrayData):
+async def save_array(payload: ArrayData, current_user=Depends(get_current_user)):
     array_entry = {
         "data": payload.data,
         "timestamp": datetime.utcnow().isoformat()
@@ -44,7 +46,7 @@ async def save_array(payload: ArrayData):
 # 2. Pop next array from queue
 # ------------------------------
 @router.get("/get_array")
-async def get_array():
+async def get_array(current_user=Depends(get_current_user)):
     try:
         array_entry = array_queue.get_nowait()  # pop from queue
     except Empty:
@@ -70,7 +72,7 @@ async def get_array():
 # 3. Download array.json file
 # ------------------------------
 @router.get("/download_array")
-async def download_array():
+async def download_array(current_user=Depends(get_current_user)):
     if not os.path.exists(file_path):
         return JSONResponse({"error": "array.json file not found"}, status_code=404)
 
@@ -85,7 +87,7 @@ async def download_array():
 # 4. Delete array.json file
 # ------------------------------
 @router.delete("/delete_array")
-async def delete_array():
+async def delete_array(current_user=Depends(get_current_user)):
     if not os.path.exists(file_path):
         return JSONResponse({"message": "file not found"}, status_code=404)
 
@@ -97,7 +99,7 @@ async def delete_array():
 # 5. Get all data from array.json
 # ------------------------------
 @router.get("/get_all_arrays")
-async def get_all_arrays():
+async def get_all_arrays(current_user=Depends(get_current_user)):
     if not os.path.exists(file_path):
         return {"message": "array.json file does not exist", "data": []}
 
@@ -114,7 +116,7 @@ async def get_all_arrays():
 # 6. Clear only the queue
 # ------------------------------
 @router.delete("/clear_queue")
-async def clear_queue():
+async def clear_queue(current_user=Depends(get_current_user)):
     cleared_count = 0
 
     while True:
@@ -135,7 +137,7 @@ async def clear_queue():
 # 7. Reset both the queue and array.json file
 # ------------------------------
 @router.delete("/reset_all")
-async def reset_all():
+async def reset_all(current_user=Depends(get_current_user)):
     # Clear queue
     while True:
         try:
