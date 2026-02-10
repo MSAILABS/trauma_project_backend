@@ -15,9 +15,11 @@ fake_user = {
     "password": hash_password("traumaprojectdemo")
 }
 
+
 class LoginRequest(BaseModel):
     username: str
     password: str
+
 
 @router.post("/auth/login")
 async def login(request: LoginRequest):
@@ -32,9 +34,9 @@ async def login(request: LoginRequest):
 
     return {"access_token": token, "token_type": "bearer"}
 
+
 @router.post("/login")
 async def login(request: OAuth2PasswordRequestForm = Depends()):
-    
     if request.username != fake_user["email"]:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 

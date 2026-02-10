@@ -1,0 +1,21 @@
+# Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDEs and metadata
+.vscode/
+.git/
+.gitignore
+.dockerignore
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
