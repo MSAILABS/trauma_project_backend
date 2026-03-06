@@ -1,0 +1,646 @@
+[
+    {
+        "timestamp": "2026-03-06 18:24:45",
+        "part_number": 12,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 12)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.166035984321007,
+            "lsi_Bleeding Control": 0.1509809389422431,
+            "lsi_Blood Products": 0.21703054055682222,
+            "lsi_Chest Decompression": 0.29904510785394944,
+            "lsi_Neurologic Products & Procedures": 0.5128411870755833,
+            "lsi_Damage Control Procedures": 0.12110959719246767
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:24:54",
+        "part_number": 13,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 13)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.1695386285162156,
+            "lsi_Bleeding Control": 0.15028841353196268,
+            "lsi_Blood Products": 0.1937350674093123,
+            "lsi_Chest Decompression": 0.2757424994080013,
+            "lsi_Neurologic Products & Procedures": 0.5416382588481258,
+            "lsi_Damage Control Procedures": 0.12087701466056926
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:25:04",
+        "part_number": 14,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 14)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.15453153276471854,
+            "lsi_Bleeding Control": 0.1598469881027652,
+            "lsi_Blood Products": 0.2109525043622728,
+            "lsi_Chest Decompression": 0.28632455215245983,
+            "lsi_Neurologic Products & Procedures": 0.5480318449288948,
+            "lsi_Damage Control Procedures": 0.11470114920708499
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:25:14",
+        "part_number": 15,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 15)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14755824096810113,
+            "lsi_Bleeding Control": 0.13138307776503952,
+            "lsi_Blood Products": 0.19424185504510474,
+            "lsi_Chest Decompression": 0.2630995240717382,
+            "lsi_Neurologic Products & Procedures": 0.4280037977571669,
+            "lsi_Damage Control Procedures": 0.11115799133133787
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:25:24",
+        "part_number": 16,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 16)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.18564018502426405,
+            "lsi_Bleeding Control": 0.13328981541624507,
+            "lsi_Blood Products": 0.20129945423605655,
+            "lsi_Chest Decompression": 0.22932622429354096,
+            "lsi_Neurologic Products & Procedures": 0.43945808277738024,
+            "lsi_Damage Control Procedures": 0.11803383936489271
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:25:34",
+        "part_number": 17,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 17)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.15015448782652735,
+            "lsi_Bleeding Control": 0.13473448850303332,
+            "lsi_Blood Products": 0.20101045276568535,
+            "lsi_Chest Decompression": 0.22454108894812363,
+            "lsi_Neurologic Products & Procedures": 0.4605863491367522,
+            "lsi_Damage Control Procedures": 0.12175417726283853
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:25:45",
+        "part_number": 18,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 18)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.17611078730978982,
+            "lsi_Bleeding Control": 0.13328981541624507,
+            "lsi_Blood Products": 0.210353131134239,
+            "lsi_Chest Decompression": 0.16750582433316688,
+            "lsi_Neurologic Products & Procedures": 0.4206092050015904,
+            "lsi_Damage Control Procedures": 0.11809926052999473
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:25:55",
+        "part_number": 19,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 19)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14524066591481286,
+            "lsi_Bleeding Control": 0.12989288881844685,
+            "lsi_Blood Products": 0.2037731890155238,
+            "lsi_Chest Decompression": 0.16989609625331692,
+            "lsi_Neurologic Products & Procedures": 0.38930620380858905,
+            "lsi_Damage Control Procedures": 0.11465582780368179
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:26:05",
+        "part_number": 20,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 20)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14524066591481286,
+            "lsi_Bleeding Control": 0.15472945309035177,
+            "lsi_Blood Products": 0.21131328118371095,
+            "lsi_Chest Decompression": 0.17322011163203646,
+            "lsi_Neurologic Products & Procedures": 0.5287240347196637,
+            "lsi_Damage Control Procedures": 0.10667795366411265
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:26:15",
+        "part_number": 21,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 21)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14264904147433927,
+            "lsi_Bleeding Control": 0.15696358322492152,
+            "lsi_Blood Products": 0.21307184520507433,
+            "lsi_Chest Decompression": 0.1841035544358709,
+            "lsi_Neurologic Products & Procedures": 0.5351298555016946,
+            "lsi_Damage Control Procedures": 0.10983755466688878
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:26:25",
+        "part_number": 22,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 22)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.15848709790523843,
+            "lsi_Bleeding Control": 0.1307750616657607,
+            "lsi_Blood Products": 0.21025505172917802,
+            "lsi_Chest Decompression": 0.18582130096597654,
+            "lsi_Neurologic Products & Procedures": 0.3994127271878117,
+            "lsi_Damage Control Procedures": 0.12269248463062149
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:26:35",
+        "part_number": 23,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 23)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.15848709790523846,
+            "lsi_Bleeding Control": 0.13077506166576072,
+            "lsi_Blood Products": 0.21025505172917802,
+            "lsi_Chest Decompression": 0.17147366737868397,
+            "lsi_Neurologic Products & Procedures": 0.4073575151280315,
+            "lsi_Damage Control Procedures": 0.12172256102867468
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:26:45",
+        "part_number": 24,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 24)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.1694993175407942,
+            "lsi_Bleeding Control": 0.1322652506123534,
+            "lsi_Blood Products": 0.21422890566843042,
+            "lsi_Chest Decompression": 0.1645450793799674,
+            "lsi_Neurologic Products & Procedures": 0.4191684867625345,
+            "lsi_Damage Control Procedures": 0.1258462991473414
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:26:55",
+        "part_number": 25,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 25)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14607055865010232,
+            "lsi_Bleeding Control": 0.13226525061235342,
+            "lsi_Blood Products": 0.22129663560790191,
+            "lsi_Chest Decompression": 0.1801893623794768,
+            "lsi_Neurologic Products & Procedures": 0.41692609365200956,
+            "lsi_Damage Control Procedures": 0.12477225604659585
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:27:05",
+        "part_number": 26,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 26)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14193541569537457,
+            "lsi_Bleeding Control": 0.14872912491095353,
+            "lsi_Blood Products": 0.2293853298150219,
+            "lsi_Chest Decompression": 0.44773540352191976,
+            "lsi_Neurologic Products & Procedures": 0.5347462423067367,
+            "lsi_Damage Control Procedures": 0.12630450445377864
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:27:15",
+        "part_number": 27,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 27)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.18085873244689463,
+            "lsi_Bleeding Control": 0.1325814660206465,
+            "lsi_Blood Products": 0.22508087485536307,
+            "lsi_Chest Decompression": 0.16650958240950428,
+            "lsi_Neurologic Products & Procedures": 0.42196062195889805,
+            "lsi_Damage Control Procedures": 0.1304938764231813
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:27:25",
+        "part_number": 28,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 28)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.17457871219639304,
+            "lsi_Bleeding Control": 0.1511912642135689,
+            "lsi_Blood Products": 0.22706083095449509,
+            "lsi_Chest Decompression": 0.17053181811274626,
+            "lsi_Neurologic Products & Procedures": 0.49459457045644656,
+            "lsi_Damage Control Procedures": 0.1278697445238503
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:27:35",
+        "part_number": 29,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 29)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.17669842205703726,
+            "lsi_Bleeding Control": 0.1322652506123534,
+            "lsi_Blood Products": 0.22247387159241577,
+            "lsi_Chest Decompression": 0.16971340586557213,
+            "lsi_Neurologic Products & Procedures": 0.41615119884240565,
+            "lsi_Damage Control Procedures": 0.12852179335076655
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:27:45",
+        "part_number": 30,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 30)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.20516408129749342,
+            "lsi_Bleeding Control": 0.12956498399691915,
+            "lsi_Blood Products": 0.21636165534576302,
+            "lsi_Chest Decompression": 0.15304598622946539,
+            "lsi_Neurologic Products & Procedures": 0.36616409380099807,
+            "lsi_Damage Control Procedures": 0.13482540071852492
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:27:55",
+        "part_number": 31,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 31)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.19839837973733546,
+            "lsi_Bleeding Control": 0.13077506166576072,
+            "lsi_Blood Products": 0.21932981265592394,
+            "lsi_Chest Decompression": 0.1566086243139537,
+            "lsi_Neurologic Products & Procedures": 0.3771377371483996,
+            "lsi_Damage Control Procedures": 0.13597144680998302
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:28:05",
+        "part_number": 32,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 32)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.18191351690904659,
+            "lsi_Bleeding Control": 0.12951006903202467,
+            "lsi_Blood Products": 0.21643533823877312,
+            "lsi_Chest Decompression": 0.17606028170941898,
+            "lsi_Neurologic Products & Procedures": 0.3841658993348558,
+            "lsi_Damage Control Procedures": 0.1287823653121443
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:28:15",
+        "part_number": 33,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 33)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14450667097007486,
+            "lsi_Bleeding Control": 0.12951006903202467,
+            "lsi_Blood Products": 0.20136570555667466,
+            "lsi_Chest Decompression": 0.1658437427874384,
+            "lsi_Neurologic Products & Procedures": 0.32362296755460945,
+            "lsi_Damage Control Procedures": 0.12744648744985837
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:28:25",
+        "part_number": 34,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 34)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.15124978601716416,
+            "lsi_Bleeding Control": 0.1292417453722342,
+            "lsi_Blood Products": 0.2005772692752137,
+            "lsi_Chest Decompression": 0.16429299931388194,
+            "lsi_Neurologic Products & Procedures": 0.29397058920764146,
+            "lsi_Damage Control Procedures": 0.12744648744985831
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:28:35",
+        "part_number": 35,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 35)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14238696110943058,
+            "lsi_Bleeding Control": 0.1295100690320247,
+            "lsi_Blood Products": 0.20464166703488454,
+            "lsi_Chest Decompression": 0.17512182881429364,
+            "lsi_Neurologic Products & Procedures": 0.31251331623773426,
+            "lsi_Damage Control Procedures": 0.12150900039723717
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:28:45",
+        "part_number": 36,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 36)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.13600402657961475,
+            "lsi_Bleeding Control": 0.12760333138081908,
+            "lsi_Blood Products": 0.19865119965109895,
+            "lsi_Chest Decompression": 0.17692423633015764,
+            "lsi_Neurologic Products & Procedures": 0.3779589953109797,
+            "lsi_Damage Control Procedures": 0.12444447412749701
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:28:55",
+        "part_number": 37,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 37)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14487702906590016,
+            "lsi_Bleeding Control": 0.13146717332612423,
+            "lsi_Blood Products": 0.19614570063946696,
+            "lsi_Chest Decompression": 0.23842169391324272,
+            "lsi_Neurologic Products & Procedures": 0.30753416705456404,
+            "lsi_Damage Control Procedures": 0.1245874312920898
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:29:05",
+        "part_number": 38,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 38)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14699262946902408,
+            "lsi_Bleeding Control": 0.12733500772102865,
+            "lsi_Blood Products": 0.19410445274915536,
+            "lsi_Chest Decompression": 0.16104611221222273,
+            "lsi_Neurologic Products & Procedures": 0.28010454506698923,
+            "lsi_Damage Control Procedures": 0.11370746868942117
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:29:15",
+        "part_number": 39,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 39)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.1448770290659002,
+            "lsi_Bleeding Control": 0.1276033313808191,
+            "lsi_Blood Products": 0.19207744962535356,
+            "lsi_Chest Decompression": 0.16921362524654193,
+            "lsi_Neurologic Products & Procedures": 0.2833780442826571,
+            "lsi_Damage Control Procedures": 0.12073696215925324
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:29:25",
+        "part_number": 40,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 40)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14245097736931084,
+            "lsi_Bleeding Control": 0.12733500772102865,
+            "lsi_Blood Products": 0.19684434537248166,
+            "lsi_Chest Decompression": 0.20319808115594787,
+            "lsi_Neurologic Products & Procedures": 0.2876590869747118,
+            "lsi_Damage Control Procedures": 0.12089927838064389
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:29:36",
+        "part_number": 41,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 41)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.1424509773693109,
+            "lsi_Bleeding Control": 0.12733500772102868,
+            "lsi_Blood Products": 0.1828804903320106,
+            "lsi_Chest Decompression": 0.14811697256364612,
+            "lsi_Neurologic Products & Procedures": 0.2645192329031714,
+            "lsi_Damage Control Procedures": 0.11133567252383283
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:29:46",
+        "part_number": 42,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 42)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.1471884208254181,
+            "lsi_Bleeding Control": 0.12733500772102865,
+            "lsi_Blood Products": 0.1752793205572937,
+            "lsi_Chest Decompression": 0.15804435826897675,
+            "lsi_Neurologic Products & Procedures": 0.26529528099473365,
+            "lsi_Damage Control Procedures": 0.1109903781759607
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:29:56",
+        "part_number": 43,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 43)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14629659239793155,
+            "lsi_Bleeding Control": 0.12733500772102865,
+            "lsi_Blood Products": 0.17750740023226505,
+            "lsi_Chest Decompression": 0.15421972512745669,
+            "lsi_Neurologic Products & Procedures": 0.26761117401844603,
+            "lsi_Damage Control Procedures": 0.12068770195195296
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:30:07",
+        "part_number": 44,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 44)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.15083824449764477,
+            "lsi_Bleeding Control": 0.12948717064583806,
+            "lsi_Blood Products": 0.16391207188195556,
+            "lsi_Chest Decompression": 0.1591691826339262,
+            "lsi_Neurologic Products & Procedures": 0.2577487263414453,
+            "lsi_Damage Control Procedures": 0.11184883545901307
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:30:17",
+        "part_number": 45,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 45)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.1747672987309223,
+            "lsi_Bleeding Control": 0.12924174537223426,
+            "lsi_Blood Products": 0.1757331634073135,
+            "lsi_Chest Decompression": 0.2848229339533776,
+            "lsi_Neurologic Products & Procedures": 0.29795558653225984,
+            "lsi_Damage Control Procedures": 0.12039479873768158
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:30:27",
+        "part_number": 46,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 46)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.14746471537525763,
+            "lsi_Bleeding Control": 0.12554094711146846,
+            "lsi_Blood Products": 0.17989079282953802,
+            "lsi_Chest Decompression": 0.27228276951062924,
+            "lsi_Neurologic Products & Procedures": 0.2940628411775003,
+            "lsi_Damage Control Procedures": 0.12858813690084786
+        }
+    },
+    {
+        "timestamp": "2026-03-06 18:30:37",
+        "part_number": 47,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 47)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 0.16073538646232485,
+            "lsi_Bleeding Control": 0.12763808135563293,
+            "lsi_Blood Products": 0.16815543775801017,
+            "lsi_Chest Decompression": 0.17717990482507767,
+            "lsi_Neurologic Products & Procedures": 0.19599281887923284,
+            "lsi_Damage Control Procedures": 0.11500482955468115
+        }
+    },
+    {
+        "timestamp": "2026-03-06 19:02:03",
+        "part_number": 1,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 1)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 1.7065675539384983e-09,
+            "lsi_Bleeding Control": 2.575260111825628e-07,
+            "lsi_Blood Products": 5.1237172726814606e-08,
+            "lsi_Chest Decompression": 1.7623285657464294e-06,
+            "lsi_Neurologic Products & Procedures": 4.527434782630735e-07,
+            "lsi_Damage Control Procedures": 2.491568409368483e-07
+        }
+    },
+    {
+        "timestamp": "2026-03-06 19:02:13",
+        "part_number": 2,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 2)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 1.061331023066714e-09,
+            "lsi_Bleeding Control": 2.786701145396364e-07,
+            "lsi_Blood Products": 5.52402212861125e-08,
+            "lsi_Chest Decompression": 1.8587360273158993e-06,
+            "lsi_Neurologic Products & Procedures": 4.338133692272095e-07,
+            "lsi_Damage Control Procedures": 3.2403119121227064e-07
+        }
+    },
+    {
+        "timestamp": "2026-03-06 19:02:23",
+        "part_number": 3,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 3)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 8.433246878603029e-10,
+            "lsi_Bleeding Control": 2.957154663363326e-07,
+            "lsi_Blood Products": 5.977632611120498e-08,
+            "lsi_Chest Decompression": 1.7980063375944155e-06,
+            "lsi_Neurologic Products & Procedures": 4.5927620817565185e-07,
+            "lsi_Damage Control Procedures": 3.746744710042549e-07
+        }
+    },
+    {
+        "timestamp": "2026-03-06 19:02:33",
+        "part_number": 4,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 4)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 7.299981175101777e-10,
+            "lsi_Bleeding Control": 2.8552244657475967e-07,
+            "lsi_Blood Products": 5.620287524266132e-08,
+            "lsi_Chest Decompression": 2.073581526929047e-06,
+            "lsi_Neurologic Products & Procedures": 3.9798476336727617e-07,
+            "lsi_Damage Control Procedures": 3.948514972762496e-07
+        }
+    },
+    {
+        "timestamp": "2026-03-06 19:02:43",
+        "part_number": 5,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 5)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 4.628703531572853e-10,
+            "lsi_Bleeding Control": 3.246944118018291e-07,
+            "lsi_Blood Products": 6.6115518393417e-08,
+            "lsi_Chest Decompression": 2.1448909137689043e-06,
+            "lsi_Neurologic Products & Procedures": 4.1463073330305633e-07,
+            "lsi_Damage Control Procedures": 5.514063445843931e-07
+        }
+    },
+    {
+        "timestamp": "2026-03-06 19:02:53",
+        "part_number": 6,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 6)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 6.931695772927071e-10,
+            "lsi_Bleeding Control": 2.8361029080770095e-07,
+            "lsi_Blood Products": 5.548499260044082e-08,
+            "lsi_Chest Decompression": 2.1979553821438458e-06,
+            "lsi_Neurologic Products & Procedures": 3.786614115597331e-07,
+            "lsi_Damage Control Procedures": 4.0736910023042583e-07
+        }
+    },
+    {
+        "timestamp": "2026-03-06 19:03:03",
+        "part_number": 7,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 7)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 8.950524210682431e-10,
+            "lsi_Bleeding Control": 2.7083092390967067e-07,
+            "lsi_Blood Products": 5.2643159165199904e-08,
+            "lsi_Chest Decompression": 2.116106998073519e-06,
+            "lsi_Neurologic Products & Procedures": 3.8391718248931284e-07,
+            "lsi_Damage Control Procedures": 3.4799595027834584e-07
+        }
+    },
+    {
+        "timestamp": "2026-03-06 19:03:13",
+        "part_number": 8,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 8)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 7.281708569450984e-10,
+            "lsi_Bleeding Control": 2.8393719730956946e-07,
+            "lsi_Blood Products": 5.5842349411250325e-08,
+            "lsi_Chest Decompression": 2.175825557060307e-06,
+            "lsi_Neurologic Products & Procedures": 3.8405266877816757e-07,
+            "lsi_Damage Control Procedures": 4.006325298178126e-07
+        }
+    },
+    {
+        "timestamp": "2026-03-06 19:03:23",
+        "part_number": 9,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 9)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 6.087388926268034e-11,
+            "lsi_Bleeding Control": 0.9999990463256836,
+            "lsi_Blood Products": 1.0,
+            "lsi_Chest Decompression": 2.720353404583875e-05,
+            "lsi_Neurologic Products & Procedures": 0.9999526739120483,
+            "lsi_Damage Control Procedures": 1.0
+        }
+    },
+    {
+        "timestamp": "2026-03-06 19:03:33",
+        "part_number": 10,
+        "predictions": {
+            "lsi_description": "W20251223095205 (Part 10)",
+            "lsi_sampling_rate": 250,
+            "lsi_Airway & Respiration": 1.0208000276179519e-06,
+            "lsi_Bleeding Control": 0.9999998807907104,
+            "lsi_Blood Products": 1.0,
+            "lsi_Chest Decompression": 3.1785343708179425e-06,
+            "lsi_Neurologic Products & Procedures": 1.0,
+            "lsi_Damage Control Procedures": 1.0
+        }
+    }
+]

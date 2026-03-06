@@ -1,0 +1,53 @@
+Inference run: 2026-01-31 03:21:36
+Model dir: ./2026-01-29_10-06-37/models/fold_2
+Data path: /home/sagemaker-user/poting/tree_model/ehr_ecg/ehr_ecg_phase1_train_v1_umb.par
+Output path: predictions.csv
+LSI filter: True
+Eval: True
+============================================================
+
+============================================================
+RF Inference (all_features_mp)
+============================================================
+
+[1] Loading models from ./2026-01-29_10-06-37/models/fold_2...
+  Loaded model for class 0 (Airway & Respiration)
+  Loaded model for class 1 (Bleeding Control)
+  Loaded model for class 2 (Blood Products)
+  Loaded model for class 3 (Chest Decompression)
+  Loaded model for class 4 (Neurologic Products & Procedures)
+  Loaded model for class 5 (Damage Control Procedures)
+  Feature count: 378
+  Thresholds: ['0.61', '0.61', '0.56', '0.60', '0.57', '0.56']
+  Loaded clip_bounds (378 features)
+
+[2] Loading data from /home/sagemaker-user/poting/tree_model/ehr_ecg/ehr_ecg_phase1_train_v1_umb.par...
+  Loaded 24798 samples from /home/sagemaker-user/poting/tree_model/ehr_ecg/ehr_ecg_phase1_train_v1_umb.par
+  After LSI filtering: 24171 samples
+
+[3] Extracting and preprocessing features...
+  Feature matrix shape: (24171, 378)
+
+[4] Predicting...
+
+============================================================
+Predictions Summary
+============================================================
+  Class 0 (Airway & Respiration): 5820/24171 predicted positive
+  Class 1 (Bleeding Control): 5030/24171 predicted positive
+  Class 2 (Blood Products): 3679/24171 predicted positive
+  Class 3 (Chest Decompression): 4475/24171 predicted positive
+  Class 4 (Neurologic Products & Procedures): 4820/24171 predicted positive
+  Class 5 (Damage Control Procedures): 5575/24171 predicted positive
+
+============================================================
+Evaluation
+============================================================
+  Class 0 (Airway & Respiration): BA=0.6056  Recall=0.4354  Precision=0.1424  F1=0.2147
+  Class 1 (Bleeding Control): BA=0.6565  Recall=0.5151  Precision=0.0475  F1=0.0870
+  Class 2 (Blood Products): BA=0.6160  Recall=0.3661  Precision=0.1884  F1=0.2487
+  Class 3 (Chest Decompression): BA=0.7194  Recall=0.6192  Precision=0.0360  F1=0.0680
+  Class 4 (Neurologic Products & Procedures): BA=0.6280  Recall=0.4430  Precision=0.1073  F1=0.1727
+  Class 5 (Damage Control Procedures): BA=0.5814  Recall=0.3871  Precision=0.0658  F1=0.1125
+
+Predictions saved to predictions.csv

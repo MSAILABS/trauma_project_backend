@@ -1,0 +1,14 @@
+batch_size : 4096
+learning_rate : 0.001
+weight_decay : 0.005
+l1_lambda : 0
+dropout_rate : 0.5
+embedding_length : None
+layer_num : 1024
+scale : 16
+bce_rate : 0.0
+noise_factor : 0.0
+gamma : 0.999
+target_class : [0, 1, 2, 3, 4, 5]
+target hosp : ALL
+desc:

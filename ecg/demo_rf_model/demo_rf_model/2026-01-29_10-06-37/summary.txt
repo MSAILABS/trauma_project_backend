@@ -1,0 +1,316 @@
+================================================================================
+Random Forest with ALL FEATURES + Nested CV + Bayesian Optimization
+(MULTIPROCESSING VERSION)
+================================================================================
+
+Started at: 2026-01-29 10:06:37
+
+Configuration:
+  Outer CV folds: 5
+  Inner CV folds (for Optuna): 3
+  Optuna trials: 30
+  Optimization metric: recall
+  Feature augmentation: True
+  Threshold max FPR: 0.2
+  Threshold source: Out-of-fold predictions (no data leakage)
+  Feature selection: ALL FEATURES for ALL CLASSES
+  Seed: 42
+  CPU cores: 96
+  Parallel class jobs: 6
+  RF cores per job: 16
+  Parallel backend: processes (loky)
+================================================================================
+
+Output folder: ./checkpoints_rf_all_features_umb_prein/2026-01-29_10-06-37
+
+================================================================================
+LOADING DATA
+================================================================================
+
+Loading data with 126 features...
+
+Loading Phase 1 training data...
+Loaded 24798 samples from /home/sagemaker-user/poting/tree_model/ehr_ecg/ehr_ecg_phase1_train_v1_umb.par
+After filtering: 24171 samples
+
+Loading Phase 1 validation data...
+Loaded 3520 samples from /home/sagemaker-user/poting/tree_model/ehr_ecg/ehr_ecg_phase1_val_v1_umb.par
+After filtering: 3454 samples
+
+Loading Phase 2 training data...
+Loaded 4160 samples from /home/sagemaker-user/poting/tree_model/ehr_ecg/ehr_ecg_phase2_train_umb.par
+After filtering: 4075 samples
+
+Loading Phase 2 validation data...
+Loaded 3169 samples from /home/sagemaker-user/poting/tree_model/ehr_ecg/ehr_ecg_phase2_val_umb.par
+After filtering: 3097 samples
+
+Total training: 24171 samples, 2100 patients
+Total validation: 10626 samples, 943 patients
+
+Extracting features...
+  Using 126 features
+  After augmentation: 378 features
+  Using 126 features
+  After augmentation: 378 features
+
+------------------------------------------------------------
+LABEL DISTRIBUTION
+------------------------------------------------------------
+
+Training set:
+  Class 0 (Airway & Respiration): 1904 pos / 22267 neg (7.88%)
+  Class 1 (Bleeding Control): 464 pos / 23707 neg (1.92%)
+  Class 2 (Blood Products): 1893 pos / 22278 neg (7.83%)
+  Class 3 (Chest Decompression): 260 pos / 23911 neg (1.08%)
+  Class 4 (Neurologic Products & Procedures): 1167 pos / 23004 neg (4.83%)
+  Class 5 (Damage Control Procedures): 948 pos / 23223 neg (3.92%)
+
+Validation set:
+  Class 0 (Airway & Respiration): 900 pos / 9726 neg (8.47%)
+  Class 1 (Bleeding Control): 201 pos / 10425 neg (1.89%)
+  Class 2 (Blood Products): 1058 pos / 9568 neg (9.96%)
+  Class 3 (Chest Decompression): 264 pos / 10362 neg (2.48%)
+  Class 4 (Neurologic Products & Procedures): 257 pos / 10369 neg (2.42%)
+  Class 5 (Damage Control Procedures): 324 pos / 10302 neg (3.05%)
+
+================================================================================
+NESTED CROSS-VALIDATION WITH ALL FEATURES
+================================================================================
+
+================================================================================
+OUTER FOLD 1/5
+================================================================================
+
+  Train: 19328 samples, 1678 patients
+  Test: 4843 samples
+
+  Training all 6 classes in parallel (processes, 6 jobs, 16 cores/RF)...
+
+  --- Fold 1 Test Results (using OOF threshold) ---
+    Class 0: BA=0.6304, Precision=0.1693, Recall=0.4592, F1=0.2474, AUC=0.7338
+    Class 1: BA=0.6445, Precision=0.0435, Recall=0.5158, F1=0.0803, AUC=0.7491
+    Class 2: BA=0.6415, Precision=0.1468, Recall=0.5144, F1=0.2285, AUC=0.7179
+    Class 3: BA=0.6668, Precision=0.0334, Recall=0.4906, F1=0.0626, AUC=0.7434
+    Class 4: BA=0.6090, Precision=0.0814, Recall=0.4369, F1=0.1373, AUC=0.6746
+    Class 5: BA=0.6448, Precision=0.0690, Recall=0.5256, F1=0.1220, AUC=0.7000
+
+================================================================================
+OUTER FOLD 2/5
+================================================================================
+
+  Train: 19357 samples, 1680 patients
+  Test: 4814 samples
+
+  Training all 6 classes in parallel (processes, 6 jobs, 16 cores/RF)...
+
+  --- Fold 2 Test Results (using OOF threshold) ---
+    Class 0: BA=0.5742, Precision=0.1205, Recall=0.3784, F1=0.1828, AUC=0.6546
+    Class 1: BA=0.6068, Precision=0.0380, Recall=0.4176, F1=0.0696, AUC=0.7048
+    Class 2: BA=0.5907, Precision=0.1408, Recall=0.3241, F1=0.1963, AUC=0.7044
+    Class 3: BA=0.7203, Precision=0.0384, Recall=0.6250, F1=0.0723, AUC=0.8082
+    Class 4: BA=0.5780, Precision=0.0590, Recall=0.3376, F1=0.1004, AUC=0.6880
+    Class 5: BA=0.5580, Precision=0.0695, Recall=0.3348, F1=0.1151, AUC=0.6394
+
+================================================================================
+OUTER FOLD 3/5
+================================================================================
+
+  Train: 19327 samples, 1681 patients
+  Test: 4844 samples
+
+  Training all 6 classes in parallel (processes, 6 jobs, 16 cores/RF)...
+
+  --- Fold 3 Test Results (using OOF threshold) ---
+    Class 0: BA=0.6175, Precision=0.1304, Recall=0.4472, F1=0.2020, AUC=0.6976
+    Class 1: BA=0.6314, Precision=0.0428, Recall=0.4556, F1=0.0783, AUC=0.6492
+    Class 2: BA=0.6056, Precision=0.1658, Recall=0.4033, F1=0.2350, AUC=0.6945
+    Class 3: BA=0.6928, Precision=0.0244, Recall=0.5854, F1=0.0469, AUC=0.7793
+    Class 4: BA=0.6503, Precision=0.1456, Recall=0.4865, F1=0.2241, AUC=0.7214
+    Class 5: BA=0.5723, Precision=0.0528, Recall=0.3356, F1=0.0912, AUC=0.6668
+
+================================================================================
+OUTER FOLD 4/5
+================================================================================
+
+  Train: 19324 samples, 1680 patients
+  Test: 4847 samples
+
+  Training all 6 classes in parallel (processes, 6 jobs, 16 cores/RF)...
+
+  --- Fold 4 Test Results (using OOF threshold) ---
+    Class 0: BA=0.5941, Precision=0.2028, Recall=0.3037, F1=0.2432, AUC=0.7093
+    Class 1: BA=0.6417, Precision=0.0693, Recall=0.5065, F1=0.1220, AUC=0.7220
+    Class 2: BA=0.6083, Precision=0.1925, Recall=0.3566, F1=0.2500, AUC=0.7007
+    Class 3: BA=0.5897, Precision=0.0247, Recall=0.4521, F1=0.0469, AUC=0.6004
+    Class 4: BA=0.6240, Precision=0.1076, Recall=0.4630, F1=0.1746, AUC=0.6666
+    Class 5: BA=0.5796, Precision=0.0734, Recall=0.3714, F1=0.1226, AUC=0.6328
+
+================================================================================
+OUTER FOLD 5/5
+================================================================================
+
+  Train: 19348 samples, 1681 patients
+  Test: 4823 samples
+
+  Training all 6 classes in parallel (processes, 6 jobs, 16 cores/RF)...
+
+  --- Fold 5 Test Results (using OOF threshold) ---
+    Class 0: BA=0.5953, Precision=0.1467, Recall=0.3929, F1=0.2136, AUC=0.6828
+    Class 1: BA=0.6269, Precision=0.0164, Recall=0.4412, F1=0.0317, AUC=0.7159
+    Class 2: BA=0.6657, Precision=0.2064, Recall=0.4987, F1=0.2920, AUC=0.7572
+    Class 3: BA=0.6599, Precision=0.0201, Recall=0.5135, F1=0.0387, AUC=0.7800
+    Class 4: BA=0.6566, Precision=0.1338, Recall=0.4861, F1=0.2098, AUC=0.7465
+    Class 5: BA=0.5983, Precision=0.0862, Recall=0.3780, F1=0.1404, AUC=0.6633
+
+================================================================================
+ENSEMBLE VALIDATION RESULTS
+================================================================================
+
+Ensemble thresholds (from OOF): ['0.58', '0.58', '0.57', '0.57', '0.56', '0.57']
+
+Per-Class Results:
+
+  Class 0 (Airway & Respiration):
+    Balanced Accuracy: 0.6102 (95% CI: [0.6010, 0.6195])
+    Precision: 0.1623
+    Recall: 0.4222
+    F1: 0.2344
+    AUC: 0.6964
+    Threshold: 0.58
+    Confusion Matrix: TP=380, FP=1962, FN=520, TN=7764
+
+  Class 1 (Bleeding Control):
+    Balanced Accuracy: 0.6558 (95% CI: [0.6467, 0.6648])
+    Precision: 0.0483
+    Recall: 0.5025
+    F1: 0.0881
+    AUC: 0.6928
+    Threshold: 0.58
+    Confusion Matrix: TP=101, FP=1991, FN=100, TN=8434
+
+  Class 2 (Blood Products):
+    Balanced Accuracy: 0.6427 (95% CI: [0.6336, 0.6518])
+    Precision: 0.2082
+    Recall: 0.4924
+    F1: 0.2927
+    AUC: 0.7266
+    Threshold: 0.57
+    Confusion Matrix: TP=521, FP=1981, FN=537, TN=7587
+
+  Class 3 (Chest Decompression):
+    Balanced Accuracy: 0.5863 (95% CI: [0.5769, 0.5957])
+    Precision: 0.0425
+    Recall: 0.4053
+    F1: 0.0769
+    AUC: 0.6663
+    Threshold: 0.57
+    Confusion Matrix: TP=107, FP=2411, FN=157, TN=7951
+
+  Class 4 (Neurologic Products & Procedures):
+    Balanced Accuracy: 0.6337 (95% CI: [0.6245, 0.6428])
+    Precision: 0.0573
+    Recall: 0.4514
+    F1: 0.1017
+    AUC: 0.7207
+    Threshold: 0.56
+    Confusion Matrix: TP=116, FP=1908, FN=141, TN=8461
+
+  Class 5 (Damage Control Procedures):
+    Balanced Accuracy: 0.5835 (95% CI: [0.5742, 0.5929])
+    Precision: 0.0557
+    Recall: 0.3580
+    F1: 0.0964
+    AUC: 0.6476
+    Threshold: 0.57
+    Confusion Matrix: TP=116, FP=1967, FN=208, TN=8335
+
+  Ensemble Macro Average:
+    Balanced Accuracy: 0.6187 (95% CI: [0.6095, 0.6279])
+    F1: 0.1484
+    AUC: 0.6917
+
+CI results saved to: ./checkpoints_rf_all_features_umb_prein/2026-01-29_10-06-37/ensemble_results_with_ci.csv
+
+================================================================================
+BEST HYPERPARAMETERS SUMMARY (across folds)
+================================================================================
+
+Class 0 (Airway & Respiration):
+  n_estimators: mean=190.00, values=[100, 150, 300, 300, 100]
+  max_depth: mean=5.00, values=[5, 5, 5, 5, 5]
+  min_samples_split: mean=13.00, values=[8, 11, 13, 20, 13]
+  min_samples_leaf: mean=4.60, values=[3, 1, 4, 10, 5]
+  max_features: most_common=log2, values=['log2', 0.5, 'log2', 'sqrt', 'log2']
+  class_weight: most_common=balanced, values=['balanced', 'balanced_subsample', 'balanced', 'balanced', 'balanced']
+
+Class 1 (Bleeding Control):
+  n_estimators: mean=240.00, values=[200, 200, 300, 300, 200]
+  max_depth: mean=5.00, values=[5, 5, 5, 5, 5]
+  min_samples_split: mean=14.60, values=[20, 10, 16, 10, 17]
+  min_samples_leaf: mean=4.60, values=[3, 2, 4, 9, 5]
+  max_features: most_common=log2, values=['log2', 0.3, 'log2', 'sqrt', 'log2']
+  class_weight: most_common=balanced_subsample, values=['balanced_subsample', 'balanced', 'balanced_subsample', 'balanced_subsample', 'balanced']
+
+Class 2 (Blood Products):
+  n_estimators: mean=210.00, values=[100, 300, 250, 300, 100]
+  max_depth: mean=5.00, values=[5, 5, 5, 5, 5]
+  min_samples_split: mean=15.20, values=[10, 15, 18, 20, 13]
+  min_samples_leaf: mean=4.80, values=[1, 2, 6, 10, 5]
+  max_features: most_common=log2, values=['log2', 0.3, 'log2', 'sqrt', 'log2']
+  class_weight: most_common=balanced, values=['balanced_subsample', 'balanced', 'balanced', 'balanced', 'balanced']
+
+Class 3 (Chest Decompression):
+  n_estimators: mean=210.00, values=[100, 150, 300, 250, 250]
+  max_depth: mean=5.00, values=[5, 5, 5, 5, 5]
+  min_samples_split: mean=11.20, values=[18, 6, 16, 5, 11]
+  min_samples_leaf: mean=3.40, values=[3, 2, 4, 1, 7]
+  max_features: most_common=0.5, values=[0.5, 0.5, 'log2', 0.5, 'log2']
+  class_weight: most_common=balanced_subsample, values=['balanced_subsample', 'balanced_subsample', 'balanced_subsample', 'balanced', 'balanced']
+
+Class 4 (Neurologic Products & Procedures):
+  n_estimators: mean=230.00, values=[250, 150, 300, 300, 150]
+  max_depth: mean=5.00, values=[5, 5, 5, 5, 5]
+  min_samples_split: mean=15.60, values=[15, 9, 17, 20, 17]
+  min_samples_leaf: mean=4.00, values=[1, 3, 3, 10, 3]
+  max_features: most_common=log2, values=['log2', 0.3, 'log2', 'sqrt', 'log2']
+  class_weight: most_common=balanced, values=['balanced', 'balanced', 'balanced', 'balanced', 'balanced']
+
+Class 5 (Damage Control Procedures):
+  n_estimators: mean=180.00, values=[100, 200, 250, 300, 50]
+  max_depth: mean=5.00, values=[5, 5, 5, 5, 5]
+  min_samples_split: mean=8.60, values=[8, 5, 11, 10, 9]
+  min_samples_leaf: mean=5.40, values=[3, 6, 3, 9, 6]
+  max_features: most_common=log2, values=['log2', 0.3, 'log2', 'sqrt', 'log2']
+  class_weight: most_common=balanced, values=['balanced', 'balanced', 'balanced', 'balanced_subsample', 'balanced']
+
+================================================================================
+SAVING MODELS
+================================================================================
+  Fold 1 models saved to ./checkpoints_rf_all_features_umb_prein/2026-01-29_10-06-37/models/fold_1/
+  Fold 2 models saved to ./checkpoints_rf_all_features_umb_prein/2026-01-29_10-06-37/models/fold_2/
+  Fold 3 models saved to ./checkpoints_rf_all_features_umb_prein/2026-01-29_10-06-37/models/fold_3/
+  Fold 4 models saved to ./checkpoints_rf_all_features_umb_prein/2026-01-29_10-06-37/models/fold_4/
+  Fold 5 models saved to ./checkpoints_rf_all_features_umb_prein/2026-01-29_10-06-37/models/fold_5/
+
+================================================================================
+TRAINING COMPLETE!
+================================================================================
+
+Configuration used:
+  Outer CV folds: 5
+  Inner CV folds: 3
+  Optuna trials: 30
+  Total features: 378
+  Seed: 42
+  Parallel: 6 processes x 16 RF cores
+
+Final Ensemble Results:
+  Macro Balanced Accuracy: 0.6187 (95% CI: [0.6095, 0.6279])
+  Macro F1: 0.1484
+  Macro AUC: 0.6917
+
+================================================================================
+Finished at: 2026-01-29 12:17:13
+Total elapsed time: 2h 10m 36s
+================================================================================
