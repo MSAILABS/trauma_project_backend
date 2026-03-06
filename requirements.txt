@@ -36,3 +36,4 @@ torch==2.10.0
 serial==0.0.97
 matplotlib==3.10.8
 pandas==2.3.3
+neurokit2==0.2.13
