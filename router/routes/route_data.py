@@ -1,6 +1,7 @@
 import os
 import json
 import threading
+import time
 from datetime import datetime
 from queue import Queue, Empty
 from pathlib import Path
@@ -21,6 +22,41 @@ array_queue = Queue(maxsize=0)
 er3_thread_lock = threading.Lock()
 current_er3_thread = None
 current_er3_stop_event = None
+current_er3_pause_event = None
+
+# Track last time /get_array was called
+last_get_array_time = datetime.utcnow()
+
+
+def _queue_cleaner_loop():
+    """
+    Background loop that clears the queue if /get_array has not been
+    called for more than 10 minutes and the queue is not empty.
+    """
+    global last_get_array_time
+    while True:
+        try:
+            now = datetime.utcnow()
+            idle_seconds = (now - last_get_array_time).total_seconds()
+            if idle_seconds > 300 and not array_queue.empty():
+                cleared = 0
+                while True:
+                    try:
+                        array_queue.get_nowait()
+                        cleared += 1
+                    except Empty:
+                        break
+                # Optional: log to stdout for debugging
+                print(f"🧹 Cleared {cleared} items from array_queue after {idle_seconds} seconds idle.")
+        except Exception:
+            # Never let the cleaner thread crash
+            pass
+        time.sleep(60)
+
+
+# Start the background queue cleaner thread
+_queue_cleaner_thread = threading.Thread(target=_queue_cleaner_loop, daemon=True)
+_queue_cleaner_thread.start()
 
 # Folder and file setup
 folder_path = os.path.join(os.getcwd(), "signal_data_json_files")
@@ -82,7 +118,7 @@ async def process_er3(
     sampling_rate = 250
     description = er3_file_path.name
 
-    global current_er3_thread, current_er3_stop_event
+    global current_er3_thread, current_er3_stop_event, current_er3_pause_event
 
     with er3_thread_lock:
         # If there is an existing processing thread, signal it to stop
@@ -90,8 +126,9 @@ async def process_er3(
             if current_er3_stop_event is not None:
                 current_er3_stop_event.set()
 
-        # Create a new stop event and worker thread
+        # Create a new stop/pause event and worker thread
         stop_event = threading.Event()
+        pause_event = threading.Event()
 
         def worker():
             try:
@@ -101,18 +138,21 @@ async def process_er3(
                     description=description,
                     model_type=model_type,
                     stop_event=stop_event,
+                    pause_event=pause_event,
                 )
             finally:
                 # When done, clear the global references if this is still the active thread
-                global current_er3_thread, current_er3_stop_event
+                global current_er3_thread, current_er3_stop_event, current_er3_pause_event
                 with er3_thread_lock:
                     if current_er3_thread is threading.current_thread():
                         current_er3_thread = None
                         current_er3_stop_event = None
+                        current_er3_pause_event = None
 
         thread = threading.Thread(target=worker, daemon=True)
         current_er3_thread = thread
         current_er3_stop_event = stop_event
+        current_er3_pause_event = pause_event
         thread.start()
 
     return {
@@ -133,25 +173,82 @@ async def reset_er3(current_user=Depends(get_current_user)):
     If an ER3 processing job is currently running in the background,
     request it to stop. Does not start a new job.
     """
-    global current_er3_thread, current_er3_stop_event
+    global current_er3_thread, current_er3_stop_event, current_er3_pause_event
+
+    # Clear the queue
+    cleared_count = 0
+    while True:
+        try:
+            array_queue.get_nowait()
+            cleared_count += 1
+        except Empty:
+            break
 
     with er3_thread_lock:
         if current_er3_thread is not None and current_er3_thread.is_alive():
             if current_er3_stop_event is not None:
                 current_er3_stop_event.set()
+            if current_er3_pause_event is not None:
+                current_er3_pause_event.clear()
 
-            # We don't join here to avoid blocking the event loop;
-            # the worker thread will clear the globals when it exits.
             return {
                 "status": "stop_requested",
+                "cleared_queue_items": cleared_count,
             }
         else:
-            # Nothing running
             current_er3_thread = None
             current_er3_stop_event = None
+            current_er3_pause_event = None
             return {
                 "status": "no_active_job",
+                "cleared_queue_items": cleared_count,
             }
+
+
+# ------------------------------
+# 1d. Pause ER3 processing if running
+# ------------------------------
+@router.post("/pause_er3")
+async def pause_er3(current_user=Depends(get_current_user)):
+    """
+    Pause the ER3 processing job if it is currently running and not already paused.
+    """
+    global current_er3_thread, current_er3_pause_event
+
+    with er3_thread_lock:
+        if current_er3_thread is not None and current_er3_thread.is_alive():
+            if current_er3_pause_event is None:
+                return {"status": "no_pause_handle"}
+            if not current_er3_pause_event.is_set():
+                current_er3_pause_event.set()
+                return {"status": "paused"}
+            else:
+                return {"status": "already_paused"}
+        else:
+            return {"status": "no_active_job"}
+
+
+# ------------------------------
+# 1e. Unpause ER3 processing if paused
+# ------------------------------
+@router.post("/unpause_er3")
+async def unpause_er3(current_user=Depends(get_current_user)):
+    """
+    Unpause the ER3 processing job if it is currently paused.
+    """
+    global current_er3_thread, current_er3_pause_event
+
+    with er3_thread_lock:
+        if current_er3_thread is not None and current_er3_thread.is_alive():
+            if current_er3_pause_event is None:
+                return {"status": "no_pause_handle"}
+            if current_er3_pause_event.is_set():
+                current_er3_pause_event.clear()
+                return {"status": "unpaused"}
+            else:
+                return {"status": "not_paused"}
+        else:
+            return {"status": "no_active_job"}
 
 
 # ------------------------------
@@ -159,6 +256,9 @@ async def reset_er3(current_user=Depends(get_current_user)):
 # ------------------------------
 @router.get("/get_array")
 async def get_array(current_user=Depends(get_current_user)):
+    global last_get_array_time
+    last_get_array_time = datetime.utcnow()
+
     try:
         array_entry = array_queue.get_nowait()  # pop from queue
     except Empty:

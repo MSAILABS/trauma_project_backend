@@ -213,6 +213,7 @@ def process_and_send_er3_data(
     description: str = "",
     model_type: str = "rf",  # "rf" or "poting"
     stop_event=None,
+    pause_event=None,
 ):
     """
     Decompresses ER3 data, splits it into 5-second chunks, 
@@ -320,11 +321,25 @@ def process_and_send_er3_data(
     # scale_factor = max_abs_value or 1  # avoid division by zero
     scale_factor = robust_scale_factor
     part_number = 1
+    stopped_early = False
     for start in range(0, total_samples, chunk_size):
         # Allow external callers to request a graceful stop between chunks
-        if stop_event is not None and getattr(stop_event, "is_set", None) and stop_event.is_set():
+        if stop_event is not None and stop_event.is_set():
             print("🔁 ER3 processing stopped by stop_event before chunk", part_number)
+            stopped_early = True
             break
+
+        # If a pause_event is provided, wait while it's set
+        if pause_event is not None:
+            while pause_event.is_set():
+                # While paused, still honor a stop request
+                if stop_event is not None and stop_event.is_set():
+                    print("🔁 ER3 processing stopped by stop_event during pause")
+                    stopped_early = True
+                    break
+                time.sleep(0.5)
+            if stopped_early:
+                break
         # --- 1. RECORD START TIME ---
         loop_start_time = time.time()
 
@@ -488,6 +503,8 @@ def process_and_send_er3_data(
 
         part_number += 1
 
+    if stopped_early:
+        return {"status": "stopped_early"}
     return {"status": "all_parts_processed"}
 
 
